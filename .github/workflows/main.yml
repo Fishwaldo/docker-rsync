@@ -7,7 +7,7 @@ on:
     branches: master
     tags:
       - 'v*'
-workflow_dispatch:
+  workflow_dispatch:
 
 jobs:
   buildx:
