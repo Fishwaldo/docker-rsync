@@ -5,7 +5,9 @@ on:
     branches: master
   push:
     branches: master
-  workflow_dispatch:
+    tags:
+      - 'v*'
+workflow_dispatch:
 
 jobs:
   buildx:
