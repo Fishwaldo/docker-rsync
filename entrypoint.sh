@@ -9,8 +9,9 @@ mkdir -p ${VOLUME}
 getent group ${GROUP} > /dev/null || addgroup ${GROUP}
 getent passwd ${USER} > /dev/null || adduser -D -H -G ${GROUP} ${USER}
 chown -R ${USER}:${GROUP} ${VOLUME}
+mkdir /etc/rsync/
 
-cat <<EOF > /etc/rsyncd.conf
+cat <<EOF > /etc/rsync/rsyncd.conf
 uid = ${USER}
 gid = ${GROUP}
 use chroot = yes
@@ -24,4 +25,4 @@ reverse lookup = no
     comment = docker volume
 EOF
 
-exec /usr/bin/rsync --no-detach --daemon --config /etc/rsyncd.conf
+exec /usr/bin/rsync --no-detach --daemon --config /etc/rsync/rsyncd.conf --verbose
