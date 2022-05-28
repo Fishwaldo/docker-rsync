@@ -8,7 +8,7 @@ mkdir -p ${VOLUME}
 
 getent group ${GROUP} > /dev/null || addgroup ${GROUP}
 getent passwd ${USER} > /dev/null || adduser -D -H -G ${GROUP} ${USER}
-chown -R ${USER}:${GROUP} ${VOLUME}
+#chown -R ${USER}:${GROUP} ${VOLUME}
 mkdir /etc/rsync/
 
 cat <<EOF > /etc/rsync/rsyncd.conf
